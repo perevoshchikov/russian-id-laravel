@@ -1,4 +1,4 @@
-# Anper\Laravel\RussianId
+# Anper\RussianId\Laravel
 
 [![Software License][ico-license]](LICENSE.md)
 [![Latest Version on Packagist][ico-version]][link-packagist]
