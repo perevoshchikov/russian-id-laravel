@@ -4,6 +4,8 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Build Status][ico-ga]][link-ga]
 
+A set of useful Laravel validation rules for identifiers of Russian individuals and legal entities.
+
 ## Install
 
 ``` bash
