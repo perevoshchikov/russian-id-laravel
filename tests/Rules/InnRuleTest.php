@@ -8,8 +8,9 @@ use Anper\RussianId\Laravel\Rules\InnRule;
 class InnRuleTest extends AbstractTestRule
 {
     protected $values = [
-        '7830002293',
-        '500100732259'
+        [true, '7830002293'],
+        [true, '500100732259'],
+        [false, '500100732250'],
     ];
 
     protected function getRule(): AbstractRule

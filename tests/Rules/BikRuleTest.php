@@ -7,7 +7,10 @@ use Anper\RussianId\Laravel\Rules\BikRule;
 
 class BikRuleTest extends AbstractTestRule
 {
-    protected $values = ['044525225'];
+    protected $values = [
+        [true, '044525225'],
+        [false, '0'],
+    ];
 
     protected function getRule(): AbstractRule
     {

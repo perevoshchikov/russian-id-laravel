@@ -4,6 +4,7 @@ namespace Anper\RussianId\Laravel\Tests\Rules;
 
 use Anper\RussianId\Laravel\Rules\AbstractRule;
 use Anper\RussianId\Laravel\Tests\TestCase;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Lang;
 
 abstract class AbstractTestRule extends TestCase
@@ -14,27 +15,12 @@ abstract class AbstractTestRule extends TestCase
     protected $values = [];
 
     /**
-     * @var mixed[]
-     */
-    protected $invalids = [''];
-
-    /**
      * @return \Generator<mixed>
      */
     public function valuesProvider(): \Generator
     {
         foreach ($this->values as $value) {
-            yield [$value];
-        }
-    }
-
-    /**
-     * @return \Generator<mixed>
-     */
-    public function invalidsProvider(): \Generator
-    {
-        foreach ($this->invalids as $value) {
-            yield [$value];
+            yield Arr::wrap($value);
         }
     }
 
@@ -42,36 +28,27 @@ abstract class AbstractTestRule extends TestCase
      * @dataProvider valuesProvider
      * @param mixed $value
      */
-    public function testValidValue($value): void
+    public function testValidate(bool $valid, $value): void
     {
-        self::assertTrue($this->getRule()->passes('test', $value));
-    }
-
-    /**
-     * @dataProvider invalidsProvider
-     * @param mixed $value
-     */
-    public function testInvalidValue($value): void
-    {
-        self::assertFalse($this->getRule()->passes('test', $value));
+        self::assertSame($valid, $this->getRule()->passes('value', $value));
     }
 
     public function testCustomMessage(): void
     {
         $rule = $this->getRule();
         $rule->setMessage('Use :attribute');
-        $rule->passes('test', null);
+        $rule->passes('value', null);
 
-        self::assertEquals('Use test', $rule->message());
+        self::assertEquals('Use value', $rule->message());
     }
 
     public function testTranslateMessage(): void
     {
         $rule = $this->getRule();
-        $rule->passes('test', null);
+        $rule->passes('value', null);
 
         $message = Lang::get($rule->getMessage(), [
-            'attribute' => 'test'
+            'attribute' => 'value'
         ]);
 
         self::assertNotEquals($message, $rule->getMessage());

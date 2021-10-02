@@ -7,7 +7,10 @@ use Anper\RussianId\Laravel\Rules\OgrnRule;
 
 class OgrnRuleTest extends AbstractTestRule
 {
-    protected $values = ['1151232294620'];
+    protected $values = [
+        [true, '1151232294620'],
+        [false, '151232294621'],
+    ];
 
     protected function getRule(): AbstractRule
     {

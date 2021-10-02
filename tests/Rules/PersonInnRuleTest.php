@@ -7,7 +7,10 @@ use Anper\RussianId\Laravel\Rules\PersonInnRule;
 
 class PersonInnRuleTest extends AbstractTestRule
 {
-    protected $values = ['500100732259'];
+    protected $values = [
+        [true, '500100732259'],
+        [false, '500100732250'],
+    ];
 
     protected function getRule(): AbstractRule
     {

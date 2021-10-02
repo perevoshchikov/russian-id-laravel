@@ -7,7 +7,10 @@ use Anper\RussianId\Laravel\Rules\SnilsRule;
 
 class SnilsRuleTest extends AbstractTestRule
 {
-    protected $values = ['11223344595'];
+    protected $values = [
+        [true, '11223344595'],
+        [false, '11223344590'],
+    ];
 
     protected function getRule(): AbstractRule
     {

@@ -8,8 +8,9 @@ use Anper\RussianId\Laravel\Rules\OgrnOrOgrnipRule;
 class OgrnOrOgrnipRuleTest extends AbstractTestRule
 {
     protected $values = [
-        '1151232294620',
-        '315850060115169'
+        [true, '1151232294620'],
+        [true, '315850060115169'],
+        [false, '315850060115160'],
     ];
 
     protected function getRule(): AbstractRule

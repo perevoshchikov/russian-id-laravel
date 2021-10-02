@@ -7,7 +7,10 @@ use Anper\RussianId\Laravel\Rules\OmsRule;
 
 class OmsRuleTest extends AbstractTestRule
 {
-    protected $values = ['2341998071655749'];
+    protected $values = [
+        [true, '2341998071655749'],
+        [false, '2341998071655740'],
+    ];
 
     protected function getRule(): AbstractRule
     {

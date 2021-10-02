@@ -7,7 +7,10 @@ use Anper\RussianId\Laravel\Rules\KppRule;
 
 class KppRuleTest extends AbstractTestRule
 {
-    protected $values = ['514944513'];
+    protected $values = [
+        [true, '514944513'],
+        [false, '0'],
+    ];
 
     protected function getRule(): AbstractRule
     {
