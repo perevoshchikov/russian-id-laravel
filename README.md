@@ -10,6 +10,52 @@
 $ composer require anper/russian-id-laravel
 ```
 
+The package will automatically register itself.
+
+## Translations
+
+If you wish to edit the package translations, you can run the following command to publish them into your `resources/lang` folder
+
+``` bash
+$ php artisan vendor:publish --provider="Anper\RussianId\Laravel\RussianIdServiceProvider"
+```
+
+## Available rules
+
+* Anper\RussianId\Laravel\Rules\BikRule
+* Anper\RussianId\Laravel\Rules\InnRule
+* Anper\RussianId\Laravel\Rules\KppRule
+* Anper\RussianId\Laravel\Rules\KsRule
+* Anper\RussianId\Laravel\Rules\LegalInnRule
+* Anper\RussianId\Laravel\Rules\OgrnipRule
+* Anper\RussianId\Laravel\Rules\OgrnOrOgrnipRule
+* Anper\RussianId\Laravel\Rules\OgrnRule
+* Anper\RussianId\Laravel\Rules\OmsRule
+* Anper\RussianId\Laravel\Rules\PersonInnRule
+* Anper\RussianId\Laravel\Rules\RsRule
+* Anper\RussianId\Laravel\Rules\SnilsRule
+
+The `KsRule` and `RsRule` require the `BIK` attribute in the validated data. You must provide the attribute name in them constructors.
+
+```php
+<?php
+
+use Anper\RussianId\Laravel\Rules\BikRule;
+use Anper\RussianId\Laravel\Rules\KsRule;
+use Anper\RussianId\Laravel\Rules\RsRule;
+use Illuminate\Support\Facades\Validator;
+
+$validator = Validator::make([
+    'bik_field'=> '...',
+    'ks_field' => '...',
+    'rs_field' => '...',
+], [
+    'bik_field'=> new BikRule(),
+    'ks_field' => new KsRule('bik_field'),
+    'rs_field' => new RsRule('bik_field'),
+]);
+```
+
 ## Tests
 
 ### Unit testing
