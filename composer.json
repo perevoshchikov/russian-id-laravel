@@ -45,7 +45,7 @@
     "illuminate/support": "^8.0|^9.0"
   },
   "require-dev": {
-    "illuminate/validation": "^8.0",
+    "illuminate/validation": "^8.0|^9.0",
     "orchestra/testbench": "^6.0",
     "phpstan/phpstan": "^1.0",
     "phpunit/phpunit": "^9.0",
